@@ -40,7 +40,8 @@
     hashedPassword = "*";
   };
 
-  environment.systemPackages = with pkgs; [ neovim tailscale ];
+  nixpkgs.overlays = import ./lib/overlays.nix ++ [ ];
+  environment.systemPackages = with pkgs; [ tailscale ];
 
   # Enable the OpenSSH daemon.
   services.openssh = {
@@ -50,6 +51,7 @@
     kbdInteractiveAuthentication = false;
     permitRootLogin = "no";
   };
+
 
   services.tailscale.enable = true;
   systemd.services.tailscale-autoconnect = {

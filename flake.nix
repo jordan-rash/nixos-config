@@ -10,7 +10,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }@inputs: let 
+    in {
     formatter.aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.nixpkgs-fmt;
     nixosConfigurations = {
       quinn = nixpkgs.lib.nixosSystem {

@@ -2,5 +2,5 @@
  * other ".nix" files in this directory are automatically loaded.
  */
 final: prev: {
-  wasmcloud-opt = final.callPackage ../pkgs/wasmcloudotp.nix { };
+  wasmcloud-opt = final.callPackage ../pkgs/wasmcloud/otp/wasmcloudotp.nix { };
 }

@@ -7,8 +7,9 @@
 
   home.packages = [
     pkgs.git
-    pkgs.neovim
+    pkgs.bat
   ];
+
   programs.git = {
     enable = true;
     userName = "Jordan Rash";
@@ -31,6 +32,21 @@
       push.default = "tracking";
       init.defaultBranch = "main";
     };
+  };
+
+  home.sessionVariables = {
+    LANG = "en_US.UTF-8";
+    LC_CTYPE = "en_US.UTF-8";
+    LC_ALL = "en_US.UTF-8";
+    EDITOR = "nvim";
+    PAGER = "less -FirSwX";
+    MANPAGER = "sh -c 'col -bx | ${pkgs.bat}/bin/bat -l man -p'";
+  };
+
+  programs.neovim = {
+    enable = true;
+
+    plugins = with pkgs; [ ];
   };
 
   home.stateVersion = "22.05";
