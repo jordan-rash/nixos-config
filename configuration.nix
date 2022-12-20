@@ -35,7 +35,9 @@
   users.users.jordan = {
     isNormalUser = true;
     home = "/home/jordan";
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user. openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEG6/XRUB4ulC26lbRjP2eaJNGZVzpeKGm4z74O9vrDZ jordan" ]; hashedPassword = "*";
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user. 
+    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEG6/XRUB4ulC26lbRjP2eaJNGZVzpeKGm4z74O9vrDZ jordan" ];
+    hashedPassword = "*";
   };
 
   environment.systemPackages = with pkgs; [ neovim tailscale ];
@@ -75,8 +77,6 @@
       # otherwise authenticate with tailscale
       ${tailscale}/bin/tailscale up --ssh -authkey tskey-auth-kEH8cN1CNTRL-Emz9RTCVnkb8HkMdV7RBfbUGVut89KTb '';
   };
-
-  # Open ports in the firewall. networking.firewall.allowedTCPPorts = [ ... ]; networking.firewall.allowedUDPPorts = [ ... ]; Or disable the firewall altogether. networking.firewall.enable = false;
 
   networking.firewall = {
     # enable the firewall
