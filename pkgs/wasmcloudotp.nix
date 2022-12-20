@@ -4,14 +4,15 @@ stdenv.mkDerivation rec {
   pname = "wasmcloud-otp";
   version = "0.59.0";
 
-  src = fetchFromGitHub {
-    owner = "wasmCloud";
-    repo = "wasmcloud-otp";
-    rev = "d4ffb1790119e118aa406cc8a31d46d907f00ee0";
-    sha256 = "AhJ8NfyJbjPYK1D9L5L9uNRwE5sR/evg/T459J/Bn0U=";
-  }
+  src = fetchFromGitHub
+    {
+      owner = "wasmCloud";
+      repo = "wasmcloud-otp";
+      rev = "d4ffb1790119e118aa406cc8a31d46d907f00ee0";
+      sha256 = "AhJ8NfyJbjPYK1D9L5L9uNRwE5sR/evg/T459J/Bn0U=";
+    }
 
-  nativeBuildInputs = [ makeWrapper ];
+    nativeBuildInputs = [ makeWrapper ];
 
   installPhase = ''
     mkdir -p $out/bin
