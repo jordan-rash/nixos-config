@@ -15,8 +15,10 @@ stdenv.mkDerivation rec {
     nativeBuildInputs = [ makeWrapper ];
 
   installPhase = ''
-    mkdir -p $out/bin
-    makeWrapper $src/wasmcloud-host $out/bin/wasmcloud-host
+    mv $src/bin $out
+    mv $src/lib $out
+    mv $src/releases $out
+    mv $src/erts-12.3.1 $out
   '';
 
   meta = with stdenv.lib; {
