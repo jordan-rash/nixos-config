@@ -41,7 +41,7 @@
   };
 
   nixpkgs.overlays = import ./lib/overlays.nix ++ [ ];
-  environment.systemPackages = with pkgs; [ tailscale ];
+  environment.systemPackages = with pkgs; [ git neovim tailscale ];
 
   # Enable the OpenSSH daemon.
   services.openssh = {

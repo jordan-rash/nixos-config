@@ -8,6 +8,7 @@
   home.packages = [
     pkgs.git
     pkgs.bat
+    pkgs.neofetch
   ];
 
   programs.git = {

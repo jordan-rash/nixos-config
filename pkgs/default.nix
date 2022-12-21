@@ -1,4 +1,5 @@
 pkgs:
+let
 in rec {
   github.com = {
     wasmCloud = {
