@@ -40,7 +40,8 @@
     hashedPassword = "*";
   };
 
-  nixpkgs.overlays = import ./lib/overlays.nix ++ [ ];
+  nixpkgs.overlays = import ./lib/overlays.nix;
+  # nixpkgs.overlays = [ (super: final: import ./pkgs final) ];
   environment.systemPackages = with pkgs; [ git neovim tailscale ];
 
   # Enable the OpenSSH daemon.
