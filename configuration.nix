@@ -42,7 +42,7 @@
 
   nixpkgs.overlays = import ./lib/overlays.nix;
   # nixpkgs.overlays = [ (super: final: import ./pkgs final) ];
-  environment.systemPackages = with pkgs; [ git neovim tailscale ];
+  environment.systemPackages = with pkgs; [ git neovim tailscale wasmcloud-host ];
 
   # Enable the OpenSSH daemon.
   services.openssh = {

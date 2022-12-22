@@ -20,7 +20,7 @@
         quinn = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
           modules = [
-	    { nixpkgs.overlays = overlays; }
+            { nixpkgs.overlays = overlays; }
 
             ./configuration.nix
             nixos-hardware.nixosModules.raspberry-pi-4

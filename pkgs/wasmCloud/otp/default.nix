@@ -1,4 +1,4 @@
-{ stdenv, autoPatchelfHook, openssl, ncurses }:
+{ lib, stdenv, makeWrapper, autoPatchelfHook, openssl_1_1, ncurses }:
 
 stdenv.mkDerivation {
   pname = "wasmcloud-host";
@@ -10,6 +10,7 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [
     autoPatchelfHook
+    makeWrapper
   ];
 
   unpackCmd = ''
@@ -18,10 +19,10 @@ stdenv.mkDerivation {
   '';
 
   dontBuild = true;
-
-  # phases = "installPhase";
-
-  buildInputs = [ openssl ncurses ];
+  buildInputs = [
+    openssl_1_1
+    ncurses
+  ];
 
   installPhase = ''
     runHook preInstall
@@ -33,20 +34,6 @@ stdenv.mkDerivation {
     chmod +x $out/bin/wasmcloud_host
     runHook postInstall
   '';
-
-
-  #installPhase = ''
-   # mkdir -p $out
-    #tar zxf $src -C $out
-   # mkdir -p $out/bin
-   # mkdir -p $out/lib
-   # mkdir -p $out/releases
-    #mkdir -p $out/erts-12.3.1
-    #cp -r $out/wch/bin $out/bin
-    #cp -r $out/wch/lib $out/lib
-    #cp -r $out/wch/releases $out/releases
-   # cp -r $out/wch/erts-12.3.1 $out/erts-12.3.1
-  #'';
 
   meta = {
     homepage = "https://github.com/wasmCloud/wasmcloud-otp";
